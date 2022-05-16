@@ -36,15 +36,15 @@ public class intTheWoodsGame {
 		System.out.println("Here are the rules:");
 		System.out.println("-------------------");
 		System.out.println("* As your adventure progresses select your choice by entering a number selection.");
-		System.out.println("* Enjoy your adventure. Press enter once again to begin. If you wish for your adventure to end, press 'Q'.");
+		System.out.println("* Enjoy your adventure. Press enter once again to begin. If you wish for your adventure to end, press 0.");
 		
 		try {System.in.read(); }
         catch (Exception ex) {}
 		
-		System.out.println("  ^      ^      ^                                                ^      ^      ^");
-		System.out.println(" ^ ^    ^ ^    ^ ^                                              ^ ^    ^ ^    ^ ^");
-		System.out.println("^ ^ ^  ^ ^ ^  ^ ^ ^                                            ^ ^ ^  ^ ^ ^  ^ ^ ^");
-		System.out.println(" |||    |||    |||                                              |||    |||    |||");
+		System.out.println("  ^      ^      ^                 ^      ^      ^                ^      ^      ^");
+		System.out.println(" ^ ^    ^ ^    ^ ^               ^ ^    ^ ^    ^ ^              ^ ^    ^ ^    ^ ^");
+		System.out.println("^ ^ ^  ^ ^ ^  ^ ^ ^             ^ ^ ^  ^ ^ ^  ^ ^ ^            ^ ^ ^  ^ ^ ^  ^ ^ ^");
+		System.out.println(" |||    |||    |||               |||    |||    |||              |||    |||    |||");
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println();
 		System.out.println("After you realize you are indeed in the woods, you see a path in the dirt, how do you wish to proceed?");
@@ -53,44 +53,55 @@ public class intTheWoodsGame {
 		displayMenu();
 		userInput = scnr.nextInt();
 		
-		while (userInput != 'Q' && userInput != 'q') {
-			switch(userInput) {
-			case 1:
-				System.out.println("Great, onwards and upwards we go, forest dweller!");
-				System.out.println();
-				System.out.println(chooseEnding());
-				break;
-			case 2:
-				System.out.println("Nothing bad can happen when you go down a mysterious path, right? Lets go!");
-				System.out.println();
-				System.out.println(chooseEnding());
-				break;
-			case 3:
-				System.out.println("This is a nice spot, you're right. I can already see the best sleeping rock.");
-				System.out.println();
-				System.out.println(chooseEnding());
-				break;
-			case 4:
-				System.out.println("*** Contacting Computer Brain ***");
-				System.out.println(computerChoice());
-				System.out.println();
-				System.out.println(chooseEnding());
-				break;
-			default:
-				System.out.println("Think again wood dweller"); 
-				}
+		try {
+			while (userInput <= 9) {
+				switch(userInput) {
+				case 1:
+					System.out.println("Great, onwards and upwards we go, forest dweller!");
+					System.out.println();
+					System.out.println(chooseEnding());
+					System.out.println(chooseFate());
+					break;
+				case 2:
+					System.out.println("Nothing bad can happen when you go down a mysterious path, right? Lets go!");
+					System.out.println();
+					System.out.println(chooseEnding());
+					System.out.println(chooseFate());
+					break;
+				case 3:
+					System.out.println("This is a nice spot, you're right. I can already see the best sleeping rock.");
+					System.out.println();
+					System.out.println(chooseEnding());
+					System.out.println(chooseFate());
+					break;
+				case 4:
+					System.out.println("*** Contacting Computer Brain ***");
+					System.out.println(computerChoice());
+					System.out.println();
+					System.out.println(chooseEnding());
+					System.out.println(chooseFate());
+					break;
+				case 0:
+					System.out.println("Leaving the Woods, see you soon!");
+					System.exit(userInput);
+				default:
+					System.out.println("Think again wood dweller"); 
+					}
 			
-			System.out.println();
-			System.out.println();
-			System.out.println("  ^      ^      ^                                                ^      ^      ^");
-			System.out.println(" ^ ^    ^ ^    ^ ^                                              ^ ^    ^ ^    ^ ^");
-			System.out.println("^ ^ ^  ^ ^ ^  ^ ^ ^                                            ^ ^ ^  ^ ^ ^  ^ ^ ^");
-			System.out.println(" |||    |||    |||                                              |||    |||    |||");
-			System.out.println("----------------------------------------------------------------------------------");
-			System.out.println();
-			System.out.println(chooseFate());
-			displayMenu();
-			userInput = scnr.nextInt();
+				System.out.println();
+				System.out.println();
+				System.out.println("  ^      ^      ^                 ^      ^      ^                ^      ^      ^");
+				System.out.println(" ^ ^    ^ ^    ^ ^               ^ ^    ^ ^    ^ ^              ^ ^    ^ ^    ^ ^");
+				System.out.println("^ ^ ^  ^ ^ ^  ^ ^ ^             ^ ^ ^  ^ ^ ^  ^ ^ ^            ^ ^ ^  ^ ^ ^  ^ ^ ^");
+				System.out.println(" |||    |||    |||               |||    |||    |||              |||    |||    |||");
+				System.out.println("----------------------------------------------------------------------------------");
+				System.out.println();
+				displayMenu();
+				userInput = scnr.nextInt();
+				}
+		}
+		catch(Exception E) {
+			System.out.println("Leaving the Woods, see you soon!");
 		}
 	}
 	
@@ -105,7 +116,7 @@ public class intTheWoodsGame {
 		System.out.println("3: Hunker Down Here, This is a Good Nap Spot");
 		System.out.println("4: Ask the All-Knowing Computer Machine How to Proceed");
 		System.out.println();
-		System.out.println("How Do You Want To Proceed?");
+		System.out.println("How Do You Want To Proceed? (Press 0 to Quit game.)");
 	}
 	
 	/**
